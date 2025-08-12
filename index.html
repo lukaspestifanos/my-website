@@ -3,84 +3,209 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About Me & Projects</title>
+<title>Your Portfolio</title>
 <style>
-  :root {
-    --primary-color: #1e90ff;
-    --bg-color: #121212;
-    --text-color: #eee;
-    --link-color: #4eaaff;
-    --link-hover: #1c7ed6;
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+  * {
+    box-sizing: border-box;
   }
   body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    background: #121212;
+    color: #eee;
     line-height: 1.6;
+    scroll-behavior: smooth;
   }
   header {
-    background: #222;
-    padding: 20px 0;
-    text-align: center;
+    position: sticky;
+    top: 0;
+    background: #181818;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    border-bottom: 1px solid #222;
   }
   header h1 {
     margin: 0;
     font-weight: 700;
-  }
-  nav {
-    margin-top: 10px;
+    font-size: 1.8rem;
+    cursor: default;
   }
   nav a {
-    color: var(--link-color);
+    color: #4eaaff;
     text-decoration: none;
-    margin: 0 15px;
+    margin-left: 30px;
     font-weight: 600;
+    font-size: 1rem;
+    position: relative;
     transition: color 0.3s ease;
   }
-  nav a:hover {
-    color: var(--link-hover);
+  nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #4eaaff;
+    transition: width 0.3s;
   }
+  nav a:hover,
+  nav a:focus {
+    color: #1c7ed6;
+  }
+  nav a:hover::after,
+  nav a:focus::after {
+    width: 100%;
+  }
+
   main {
-    max-width: 900px;
-    margin: 40px auto;
+    max-width: 960px;
+    margin: 60px auto 80px;
     padding: 0 20px;
   }
+
   section {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
-  section h2 {
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  h2 {
+    font-size: 2.8rem;
+    margin-bottom: 24px;
+    border-bottom: 3px solid #4eaaff;
+    padding-bottom: 8px;
     font-weight: 700;
   }
-  #about p {
+  p {
     font-size: 1.1rem;
+    max-width: 700px;
   }
-  #projects ul {
-    list-style: none;
-    padding: 0;
+
+  /* Projects grid */
+  .projects-grid {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
-  #projects li {
-    margin: 12px 0;
+  .project-card {
+    background: #1f1f1f;
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-  #projects a {
-    color: var(--link-color);
+  .project-card:hover,
+  .project-card:focus {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(78, 170, 255, 0.6);
+    outline: none;
+  }
+  .project-card h3 {
+    margin: 0 0 12px;
+    color: #4eaaff;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  .project-card p {
+    flex-grow: 1;
+    color: #bbb;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .project-card a {
+    margin-top: 18px;
     font-weight: 600;
-    font-size: 1.1rem;
-    text-decoration: none;
-  }
-  #projects a:hover {
+    font-size: 1rem;
+    color: #1c7ed6;
     text-decoration: underline;
-    color: var(--link-hover);
+    align-self: flex-start;
+    transition: color 0.3s ease;
   }
+  .project-card a:hover,
+  .project-card a:focus {
+    color: #4eaaff;
+  }
+
+  /* Contact form */
+  form {
+    max-width: 500px;
+  }
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #4eaaff;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    border: none;
+    border-radius: 8px;
+    background: #292929;
+    color: #eee;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.3s ease;
+  }
+  input:focus, textarea:focus {
+    outline: 2px solid #4eaaff;
+    background: #1f1f1f;
+  }
+  button {
+    background: #4eaaff;
+    border: none;
+    padding: 14px 28px;
+    font-weight: 700;
+    color: #121212;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  button:hover,
+  button:focus {
+    background: #1c7ed6;
+    outline: none;
+  }
+
+  /* Footer */
   footer {
+    background: #181818;
+    padding: 24px 20px;
     text-align: center;
-    padding: 25px 0;
-    background: #222;
+    color: #666;
     font-size: 0.9rem;
-    color: #888;
+    font-weight: 500;
+    border-top: 1px solid #222;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 480px) {
+    header {
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px 20px;
+    }
+    nav a {
+      margin-left: 15px;
+      font-size: 0.95rem;
+    }
   }
 </style>
 </head>
@@ -89,42 +214,77 @@
 <header>
   <h1>Your Name</h1>
   <nav>
-    <a href="#about">About Me</a>
-    <a href="#projects">Projects</a>
+    <a href="#about" tabindex="0">About</a>
+    <a href="#projects" tabindex="0">Projects</a>
+    <a href="#contact" tabindex="0">Contact</a>
   </nav>
 </header>
 
 <main>
-  <section id="about">
+  <section id="about" tabindex="0">
     <h2>About Me</h2>
     <p>
-      Hey, I’m [Your Name], a passionate creative working on music, culture, and tech projects. I love building communities and pushing underground culture forward through innovative platforms.
+      Hello! I’m <strong>Lukas Estifanos</strong>, a developer passionate about creating smooth, elegant web experiences that showcase both creativity and code. I build interactive sites and apps that push the boundaries of design and functionality.
     </p>
   </section>
 
-  <section id="projects">
+  <section id="projects" tabindex="0">
     <h2>Projects</h2>
-    <ul>
-      <li><a href="https://www.instagram.com/offrecordsounds/" target="_blank" rel="noopener noreferrer">Off Record Sounds</a></li>
-      <li><a href="https://www.instagram.com/splitconcepts/" target="_blank" rel="noopener noreferrer">Split</a></li>
-      <!-- Add more projects here -->
-    </ul>
+    <div class="projects-grid">
+      <article class="project-card" tabindex="0">
+        <h3>Off Record Sounds</h3>
+        <p>A cutting-edge music platform pushing underground culture forward.</p>
+        <a href="https://offrecordsounds.com" target="_blank" rel="noopener noreferrer">Visit Site →</a>
+      </article>
+      <article class="project-card" tabindex="0">
+        <h3>Split</h3>
+        <p>Innovative music discovery and cultural mapping platform.</p>
+        <a href="https://splitmusic.com" target="_blank" rel="noopener noreferrer">Visit Site →</a>
+      </article>
+      <article class="project-card" tabindex="0">
+        <h3>Heat Check</h3>
+        <p>Real-time heatmap of underground music scenes and momentum.</p>
+        <a href="https://heatcheck.example" target="_blank" rel="noopener noreferrer">Visit Site →</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact" tabindex="0">
+    <h2>Contact Me</h2>
+    <form onsubmit="event.preventDefault(); alert('Thanks for reaching out! I will get back to you soon.');">
+      <label for="name">Name</label>
+      <input id="name" type="text" placeholder="Your name" required />
+
+      <label for="email">Email</label>
+      <input id="email" type="email" placeholder="your.email@example.com" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 </main>
 
 <footer>
-  &copy; 2025 split concepts. all rights reserved.
+  &copy; 2025 split concepts
 </footer>
 
 <script>
-  // Smooth scroll for anchor links
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.querySelector(link.getAttribute('href'));
-      target.scrollIntoView({ behavior: 'smooth' });
+  // Scroll reveal animation for sections
+  function revealOnScroll() {
+    const sections = document.querySelectorAll('section');
+    const triggerBottom = window.innerHeight * 0.85;
+
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if(sectionTop < triggerBottom) {
+        section.classList.add('visible');
+      }
     });
-  });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
 </script>
 
 </body>
