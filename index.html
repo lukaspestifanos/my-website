@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Me & Projects</title>
+<style>
+  :root {
+    --primary-color: #1e90ff;
+    --bg-color: #121212;
+    --text-color: #eee;
+    --link-color: #4eaaff;
+    --link-hover: #1c7ed6;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+  header {
+    background: #222;
+    padding: 20px 0;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0;
+    font-weight: 700;
+  }
+  nav {
+    margin-top: 10px;
+  }
+  nav a {
+    color: var(--link-color);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: var(--link-hover);
+  }
+  main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  section {
+    margin-bottom: 60px;
+  }
+  section h2 {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  #about p {
+    font-size: 1.1rem;
+  }
+  #projects ul {
+    list-style: none;
+    padding: 0;
+  }
+  #projects li {
+    margin: 12px 0;
+  }
+  #projects a {
+    color: var(--link-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+  }
+  #projects a:hover {
+    text-decoration: underline;
+    color: var(--link-hover);
+  }
+  footer {
+    text-align: center;
+    padding: 25px 0;
+    background: #222;
+    font-size: 0.9rem;
+    color: #888;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Your Name</h1>
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#projects">Projects</a>
+  </nav>
+</header>
+
+<main>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hey, I’m [Your Name], a passionate creative working on music, culture, and tech projects. I love building communities and pushing underground culture forward through innovative platforms.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li><a href="https://www.instagram.com/offrecordsounds/" target="_blank" rel="noopener noreferrer">Off Record Sounds</a></li>
+      <li><a href="https://www.instagram.com/splitconcepts/" target="_blank" rel="noopener noreferrer">Split</a></li>
+      <!-- Add more projects here -->
+    </ul>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 split concepts. all rights reserved.
+</footer>
+
+<script>
+  // Smooth scroll for anchor links
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
